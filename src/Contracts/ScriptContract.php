@@ -10,6 +10,8 @@ interface ScriptContract
 
     public function getScript();
 
+    public function getPreparedScript();
+
     public function getTimeOut();
 
     public function handleOuput($process, $type, $buffer);

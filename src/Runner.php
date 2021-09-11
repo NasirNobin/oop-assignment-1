@@ -21,7 +21,7 @@ class Runner
 
     public function run()
     {
-        $this->process = Process::fromShellCommandline($this->script->getScript());
+        $this->process = Process::fromShellCommandline($this->script->getPreparedScript());
 
         $this->process->setTimeout($this->script->getTimeOut());
 

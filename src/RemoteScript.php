@@ -34,4 +34,9 @@ abstract class RemoteScript extends Script implements RemoteScriptContract
         return 'ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" -i /home/'.get_current_user().'/id_rsa'.
             $this->getRemoteUser().'@'.$this->ipAddress().' /bin/bash <<\'EOT\''.PHP_EOL.$script.PHP_EOL.'EOT';
     }
+    
+    public function getPreparedScript()
+    {
+        return $this->withSsh($this->getScript());
+    }
 }

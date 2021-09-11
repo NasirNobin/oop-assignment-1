@@ -7,9 +7,6 @@ use Symfony\Component\Process\Process;
 
 abstract class Script implements ScriptContract
 {
-    /** @var Process */
-    private $process;
-
     public function getUserName()
     {
         return 'root';
@@ -23,5 +20,10 @@ abstract class Script implements ScriptContract
     public function handleOuput($process, $type, $buffer)
     {
         echo $buffer.PHP_EOL;
+    }
+
+    public function getPreparedScript()
+    {
+        return $this->getScript(); // no formatting by default
     }
 }
