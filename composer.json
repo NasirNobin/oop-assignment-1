@@ -1,0 +1,17 @@
+{
+    "name": "nasirnobin/oop-assignment-1",
+    "authors": [
+        {
+            "name": "NasirNobin",
+            "email": "nasir.nobin@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require": {
+        "symfony/process": "^5.3"
+    }
+}
