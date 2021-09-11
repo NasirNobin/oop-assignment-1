@@ -1,6 +1,6 @@
 # PHP Script Runner
 
-This package provides a clean inerface to programmatically create and run terminal commands with PHP. It can run scripts both on local and remote (ssh) servers.
+This package provides a clean interface to programmatically create and run terminal commands with PHP. It can run scripts both on local and remote (ssh) servers.
 
 ## Defining a Script
 ```PHP
