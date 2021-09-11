@@ -2,7 +2,7 @@
 
 namespace App\Scripts;
 
-use App\Managers\Script;
+use App\Script;
 
 class Ls extends Script
 {

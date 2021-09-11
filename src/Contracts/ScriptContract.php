@@ -12,7 +12,5 @@ interface ScriptContract
 
     public function getTimeOut();
 
-    public function run();
-
     public function handleOuput($process, $type, $buffer);
 }

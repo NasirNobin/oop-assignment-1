@@ -2,7 +2,7 @@
 
 namespace App\Scripts;
 
-use App\Managers\FFmpegScript;
+use App\FFmpegScript;
 
 class ResizeVideo extends FFmpegScript
 {
