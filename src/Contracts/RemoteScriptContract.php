@@ -6,5 +6,5 @@ interface RemoteScriptContract
 {
     public function getRemoteUser();
 
-    public function ipAddress();
+    public function getIpAddress();
 }

@@ -7,9 +7,6 @@ use Symfony\Component\Process\Process;
 
 abstract class RemoteScript extends Script implements RemoteScriptContract
 {
-    /** @var Process */
-    private Process $process;
-
     protected $remoteUser;
     protected $ipAddress;
 
@@ -24,7 +21,7 @@ abstract class RemoteScript extends Script implements RemoteScriptContract
         return $this->remoteUser;
     }
 
-    public function ipAddress()
+    public function getIpAddress()
     {
         return $this->ipAddress;
     }
@@ -32,9 +29,9 @@ abstract class RemoteScript extends Script implements RemoteScriptContract
     public function withSsh($script)
     {
         return 'ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" -i /home/'.get_current_user().'/id_rsa'.
-            $this->getRemoteUser().'@'.$this->ipAddress().' /bin/bash <<\'EOT\''.PHP_EOL.$script.PHP_EOL.'EOT';
+            $this->getRemoteUser().'@'.$this->getIpAddress().' /bin/bash <<\'EOT\''.PHP_EOL.$script.PHP_EOL.'EOT';
     }
-    
+
     public function getPreparedScript()
     {
         return $this->withSsh($this->getScript());
