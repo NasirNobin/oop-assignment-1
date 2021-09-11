@@ -2,7 +2,7 @@
 
 This package provides a clean interface to programmatically create and run terminal commands with PHP. It can run scripts both on local and remote (ssh) servers.
 
-## Defining a Script
+## Defining Script
 ```PHP
 
 use App\Managers\Script;
@@ -31,6 +31,36 @@ class Ls extends Script
         return 2;
     }
 }
+```
+
+
+## Defining a remote script 
+```PHP 
+use App\Managers\RemoteScript;
+
+class Deployment extends RemoteScript
+{
+    public function __construct($ipAddress, $remoteUser = 'root')
+    {
+        $this->ipAddress = $ipAddress;
+        $this->remoteUser = $remoteUser;
+    }
+
+    public function getScript()
+    {
+        return "
+            git pull origin master
+            composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
+            npm install && npm run production
+        ";
+    }
+
+    public function getTimeOut()
+    {
+        return 600;
+    }
+}
+
 ```
 
 More Example Scripts Available at `/src/Scripts/`
