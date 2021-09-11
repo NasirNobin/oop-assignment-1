@@ -40,12 +40,6 @@ use App\Managers\RemoteScript;
 
 class Deployment extends RemoteScript
 {
-    public function __construct($ipAddress, $remoteUser = 'root')
-    {
-        $this->ipAddress = $ipAddress;
-        $this->remoteUser = $remoteUser;
-    }
-
     public function getScript()
     {
         return "

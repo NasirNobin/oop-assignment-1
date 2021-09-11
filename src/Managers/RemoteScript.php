@@ -13,6 +13,12 @@ abstract class RemoteScript extends Script implements RemoteScriptContract
     protected $remoteUser;
     protected $ipAddress;
 
+    public function __construct($ipAddress, $remoteUser = 'root')
+    {
+        $this->ipAddress = $ipAddress;
+        $this->remoteUser = $remoteUser;
+    }
+
     public function run()
     {
         $this->process = Process::fromShellCommandline(
