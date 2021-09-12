@@ -31,7 +31,7 @@ class Ls extends Script
 ```
 
 
-## Defining a remote script 
+## Defining a Remote Script 
 ```PHP 
 class Deployment extends RemoteScript
 {
@@ -42,6 +42,41 @@ class Deployment extends RemoteScript
             composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
             npm install && npm run production
         ";
+    }
+
+    public function getTimeOut()
+    {
+        return 600;
+    }
+}
+```
+
+## Defining a FFmpeg Script
+```PHP
+class ResizeVideo extends FFmpegScript
+{
+    private $inputFilePath;
+    private $outputFilePath;
+    private $height;
+    private $width;
+
+    public function __construct($inputFilePath, $outputFilePath, $width, $height)
+    {
+        $this->inputFilePath = $inputFilePath;
+        $this->outputFilePath = $outputFilePath;
+        $this->width = $width;
+        $this->height = $height;
+    }
+
+    public function getScript()
+    {
+        return sprintf("%s -i %s -vf scale=%s:%s -y %s",
+            $this->getFFmpegPath(),
+            $this->inputFilePath,
+            $this->width,
+            $this->height,
+            $this->outputFilePath
+        );
     }
 
     public function getTimeOut()
