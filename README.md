@@ -69,3 +69,7 @@ More Example Scripts Available at `/src/Scripts/`
 // run deployment script into a specific server by ssh
 (new Runner(new Deployment('123.123.123.123', 'root')))->run();
 ```
+
+
+## TODO: 
+- [ ] Implement `RunInBackground` interface, that would be able to run any types of script in background
